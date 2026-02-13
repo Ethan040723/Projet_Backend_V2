@@ -1,3 +1,4 @@
+const DaoarticleMock = require("./mock/daoarticle-mock");
 module.exports = {
 
     /**
@@ -31,6 +32,10 @@ module.exports = {
         else if (process.env.BDD_MODE === "mongodb") {
             const DAOUserMongoose = require("./mongoose/daouser-mongoose");
             return new DAOUserMongoose();
+        }
+        else if (process.env.BDD_MODE === "Mock") {
+            const DaouserMock = require("./mock/daouser-mock");
+            return new DaouserMock();
         }
     }
 }
