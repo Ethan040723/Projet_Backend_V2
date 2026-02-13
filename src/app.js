@@ -22,8 +22,9 @@ else if (process.env.BDD_MODE === "mongodb") {
 // Injecter route externe
 // -- importer
 const articleRoutes = require('./route/article-route')
+const userRoutes = require('./route/auth-route')
 // -- injecter dans le serveur
-app.use(articleRoutes);
+app.use(articleRoutes,userRoutes);
 
 // Démarrer le serveur avec le port 3000
 app.listen(3000, () => {

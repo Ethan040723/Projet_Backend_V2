@@ -1,5 +1,5 @@
 const DAOFactory = require("../dao/daoFactory");
-const {makeService} = require("./service-helper");
+const {makeService, makeError} = require("./service-helper");
 const {v4 :uuidv4} = require("uuid");
 
 
@@ -11,7 +11,7 @@ module.exports = {
         const toutMesArticles = await DAOFactory.getDaoArticle().selectAll();
 
         if (toutMesArticles === undefined) {
-            return makeService("700", "Liste introuvables", null);
+            return makeError("700", "Liste introuvables", null);
         }
 
         return makeService("200", "Liste récupérer", toutMesArticles);
@@ -19,8 +19,8 @@ module.exports = {
 
     getArticleByID : async (param) => {
         const article = await DAOFactory.getDaoArticle().selectById(param);
-        if (article === undefined) {
-            return makeService("702", "article introubvable", null)
+        if (article === undefined || article === null) {
+            return makeError("702", "article introubvable", null)
         }
         return makeService("201", "Article trouvé" , article);
     },
@@ -58,7 +58,7 @@ module.exports = {
     DeleteArticle : async (id) => {
       let findArticle = await DAOFactory.getDaoArticle().selectById(id);
       if (findArticle === null || findArticle === undefined) {
-          return makeService("702" , "article introuvable", null)
+          return makeError("702" , "article introuvable", null)
       }
       else {
           await DAOFactory.getDaoArticle().delete(findArticle);

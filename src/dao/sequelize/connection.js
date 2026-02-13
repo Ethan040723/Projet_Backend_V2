@@ -6,7 +6,8 @@ module.exports = {
         sequelize.authenticate()
             .then(() => {
                 console.log('Connexion MySQL OK')
-                const Game = require('./article-model');
+                const Article = require('./article-model');
+                const User = require('./user-model');
                 sequelize.sync()
                     .then(() => console.log('Tables synchronisées'))
                     .catch(err => console.error(err))
