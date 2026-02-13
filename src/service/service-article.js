@@ -22,7 +22,7 @@ module.exports = {
         if (article === undefined) {
             return makeService("702", "article introubvable", null)
         }
-        return makeService("200", "Article trouvé" , article);
+        return makeService("201", "Article trouvé" , article);
     },
 
     createArticle : async (new_article) => {
@@ -44,7 +44,7 @@ module.exports = {
 
             await DAOFactory.getDaoArticle().save(articletrouve);
 
-            return makeService("200", "Article modifié avbec succés", new_article);
+            return makeService("203", "Article modifié avbec succés", new_article);
 
         }
 
@@ -52,7 +52,7 @@ module.exports = {
 
         const NewArticle = await DAOFactory.getDaoArticle().insert(article);
 
-        return makeService("200", "Article crée avec succès", NewArticle);
+        return makeService("202", "Article crée avec succès", NewArticle);
     },
 
     DeleteArticle : async (id) => {
@@ -62,7 +62,7 @@ module.exports = {
       }
       else {
           await DAOFactory.getDaoArticle().delete(findArticle);
-          return makeService("200", "article supprimé avec succès", findArticle);
+          return makeService("204", "article supprimé avec succès", findArticle);
       }
     }
 }

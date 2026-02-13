@@ -18,5 +18,8 @@ module.exports = {
             const DaoarticleMock = require("./mock/daoarticle-mock");
             return new DaoarticleMock();
         }
+        // Fallback
+        const DaoarticleMock = require("./mock/daoarticle-mock");
+        return new DaoarticleMock();
     }
 }
