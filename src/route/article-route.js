@@ -26,6 +26,7 @@ router.post("/articles/save", async (request, response) => {
 router.delete("/articles/:id", async (request, response) => {
     const id = request.params.id;
     const serviceReponse = await ArticleService.DeleteArticle(id)
+    return response.json(serviceResponse);
 })
 
 
