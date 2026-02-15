@@ -48,7 +48,7 @@ module.exports = {
 
         }
 
-        let article = {id: generate_id, title:new_article.title, desc:new_article.desc, author: new_article.desc, imgPath:new_article.imgPath};
+        let article = {id: generate_id, title:new_article.title, desc:new_article.desc, author: new_article.author, imgPath:new_article.imgPath};
 
         const NewArticle = await DAOFactory.getDaoArticle().insert(article);
 
